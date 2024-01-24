@@ -3,7 +3,7 @@ package models
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Book struct {
-	ID              primitive.ObjectID `json:"id" bson:"_id"`
+	ID              primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	Title           string             `json:"title" validate:"required"`
 	Author          string             `json:"author" validate:"required,min=3"`
 	Genre           string             `json:"genre" validate:"required,min=3"`
@@ -15,7 +15,7 @@ type Book struct {
 }
 
 type Review struct {
-	ID      primitive.ObjectID `gorm:"primary_key" json:"id"`
+	ID      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	BookID  primitive.ObjectID `json:"book_id"`
 	UserID  primitive.ObjectID `json:"user_id"`
 	Rating  int                `json:"rating"`

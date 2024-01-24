@@ -32,7 +32,7 @@ func main() {
 		Handler: router,
 	}
 
-	// routes.SetUpBooks(router)
+	routes.SetUpBooks(router)
 	// routes.SetUpReviews(router)
 	routes.SetUpUsers(router)
 
