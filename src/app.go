@@ -33,7 +33,7 @@ func main() {
 	}
 
 	routes.SetUpBooks(router)
-	// routes.SetUpReviews(router)
+	routes.SetUpReviews(router)
 	routes.SetUpUsers(router)
 
 	router.GET("/healthcheck", func(ctx *gin.Context) {
