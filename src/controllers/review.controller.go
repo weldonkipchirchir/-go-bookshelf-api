@@ -60,3 +60,22 @@ func AddReview(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, insertedReview)
 }
+
+func GetAverageRating(c *gin.Context) {
+	_, ok := c.Get("id")
+	if !ok {
+		c.JSON(http.StatusUnauthorized, gin.H{
+			"message": "Unauthorized",
+		})
+		return
+	}
+
+	bookId := c.Params.ByName("id")
+	rating, err := services.GetAverageRating(bookId)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal Server Error"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"averageRating": rating})
+}

@@ -11,6 +11,6 @@ func SetUpReviews(router *gin.Engine) {
 	reviewGroup.Use(middleware.Authentication())
 	// {
 	reviewGroup.POST("/:bookID", controllers.AddReview)
-	// 	reviewGroup.GET("/average-rating", controllers.GetAverageRating)
+	reviewGroup.GET("/average-rating/:id", controllers.GetAverageRating)
 	// }
 }
